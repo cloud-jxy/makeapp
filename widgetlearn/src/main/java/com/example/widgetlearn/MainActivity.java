@@ -4,6 +4,8 @@ import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
@@ -23,8 +25,8 @@ public class MainActivity extends AppCompatActivity {
 
     private void initView() {
         mToolbar.setTitle("Title");
-        mToolbar.inflateMenu(R.menu.menu_toolbar);
         setSupportActionBar(mToolbar);
+//        mToolbar.inflateMenu(R.menu.menu_toolbar);
         mToolbar.setSubtitle("Subtitle");
         mToolbar.setLogo(R.mipmap.ic_star_white_24dp);
         mToolbar.setBackgroundColor(getColor(R.color.colorPrimaryDark));
@@ -56,8 +58,13 @@ public class MainActivity extends AppCompatActivity {
                 return false;
             }
         });
-
-
     }
 
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.menu_toolbar, menu);
+        return true;
+    }
 }
